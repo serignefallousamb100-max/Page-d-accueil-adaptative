@@ -1,0 +1,305 @@
+
+
+/* =========================================================
+   1. Variables : couleurs, typographie, espacements
+   ========================================================= */
+:root{
+  --vert: #1e7a4c;
+  --vert-fonce: #14543a;
+  --vert-clair: #9be3b9;
+  --creme: #fff1de;
+  --noir: #101412;
+  --texte: #1b1b1b;
+   --or: gold;
+  --azur: azure;
+
+  --police: "Segoe UI", system-ui, -apple-system, Verdana, sans-serif;
+  --espace: 1.5rem;
+  --largeur-max: 1100px;
+}
+
+/* =========================================================
+   2. Base
+   ========================================================= */
+html{
+  scroll-behavior: smooth;
+}
+
+body{
+  font-family: var(--police);
+  color: var(--texte);
+  line-height: 1.6;
+}
+
+h1, 
+h3{
+  line-height: 1.2;
+  color: gold;
+}
+
+h2{
+    color:azure;
+    transition: color 0.3s;
+}
+   
+h2:hover{
+      /* transition: scale(1.1); */
+      color: #14543a;
+}
+
+
+p{
+    background-color: gold;
+    color: black;
+}
+
+h4{
+    color: gold;
+}
+
+a{
+    transition: transform 2s;
+}
+
+a:hover{
+    /* transform: scale(1.1); */
+    color: gold;
+   
+}
+
+a:focus-visible,
+.btn:focus-visible{
+  outline: 3px solid var(--vert-clair);
+  outline-offset: 3px;
+}
+
+/* =========================================================
+   3. En-tête et navigation (Flexbox)
+   ========================================================= */
+.site-header{
+  background-color: var(--noir);
+}
+
+.navbar-perso{
+  display: flex;
+  justify-content: space-between; /* logo à gauche, menu à droite */
+  align-items: center;            /* alignement vertical */
+  max-width: var(--largeur-max);
+  margin: 0 auto;
+  padding: 1rem var(--espace);
+}
+
+.logo{
+  color: var(--creme);
+  font-size: 1.5rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.menu{
+  display: flex;
+  gap: 2rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.menu a{
+  color: var(--creme);
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.menu a:hover{
+  color: var(--vert-clair);
+}
+img{
+    border-radius: 10px;
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+
+}
+
+/* =========================================================
+   4. Section principale (Flexbox)
+   ========================================================= */
+.hero{
+  display: flex;
+  align-items: center;            /* centre texte et visuel verticalement */
+  justify-content: space-between;
+  gap: 3rem;
+  max-width: var(--largeur-max);
+  margin: 0 auto;
+  padding: 5rem var(--espace);
+}
+
+.hero__texte{
+  flex: 1 1 55%;
+}
+
+.hero__texte h1{
+  font-size: 2.75rem;
+  margin-bottom: 1rem;
+}
+
+.hero__texte p{
+  font-size: 1.15rem;
+  margin-bottom: 2rem;
+}
+
+.hero__boutons{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.hero__visuel{
+  flex: 1 1 35%;
+  padding: 1.5rem;
+  background-color: var(--noir);
+  border-radius: 12px;
+  color: var(--vert-clair);
+  font-size: 1.1rem;
+}
+
+.hero__visuel pre{
+  margin: 0;
+  color: inherit;
+}
+
+/* Le fond vert couvre toute la largeur de la page */
+main > .hero{
+  max-width: none;
+  padding-inline: max(var(--espace), calc((100% - var(--largeur-max)) / 2 + var(--espace)));
+  background-color: var(--vert-fonce);
+  color: var(--creme);
+}
+
+/* =========================================================
+   5. Fonctionnalités : 3 cartes en grille (CSS Grid)
+   ========================================================= */
+.features{
+  max-width: var(--largeur-max);
+  margin: 0 auto;
+  padding: 4rem var(--espace);
+}
+
+.features h2{
+  margin-bottom: 2rem;
+  text-align: center;
+  font-size: 2rem;
+  background-color: black;
+}
+
+.features__grille{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 colonnes égales */
+  gap: var(--espace);
+}
+
+/* Personnalisation des cartes Bootstrap */
+.feature-card{
+    background-color: gold;
+  --bs-card-bg: var(--creme);
+  --bs-card-border-color: var(--vert);
+  border-width: 2px;
+  transition: transform 0.3s;
+}
+
+.feature-card:hover{
+  transform: translateY(-10px);
+}
+
+.feature-card .card-title{
+  color: var(--vert-fonce);
+  font-size: 1.35rem;
+  text-align: center;
+  transition: transform 0.3s;
+  
+}
+ .feature-card .card-title:hover{
+    transform: scale(1.1);
+ }
+
+/* =========================================================
+   6. Pied de page
+   ========================================================= */
+.site-footer{
+  padding: 2.5rem var(--espace);
+  background-color: var(--noir);
+  color: var(--creme);
+  text-align: center;
+}
+
+.site-footer a{
+  color: var(--vert-clair);
+}
+
+.copyright{
+  margin: 1rem 0 0;
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+
+/* =========================================================
+   7. Adaptatif (media queries)
+   ========================================================= */
+
+/* Tablettes : 2 colonnes, titre un peu plus petit */
+@media (max-width: 900px){
+  .features__grille{
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .hero__texte h1{
+    font-size: 2.25rem;
+  }
+}
+
+/* Téléphones : tout passe en colonne */
+@media (max-width: 600px){
+  .navbar-perso{
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .menu{
+    gap: 1.25rem;
+  }
+
+  .hero{
+    flex-direction: column;
+    padding-block: 3rem;
+  }
+
+  .hero__texte h1{
+    font-size: 1.85rem;
+  }
+
+  .features__grille{
+    grid-template-columns: 1fr;
+  }
+}
+
+   /* sensibles aux animations */
+@media (prefers-reduced-motion: reduce){
+  *{
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+
+
+/* Étape IA : Demandez à un assistant IA d’analyser votre CSS et de vous suggérer une amélioration. Appliquez cette suggestion à votre projet et rédigez 2 à 3 phrases expliquant la modification apportée.
+   J'ai modifié les balises p1 et p2 par h4 et h5, puis supprimer les paranthéses de (transition: transform(2s);) et ajouter les couleurs gold, azure, et black sur le root.
+   J'ai aussi modifié (img { margin-left: 13%; }) par(img max-width: 100%; height: auto; border-radius: 10px;) et
+   ajouter aussi : cette media les sensibles aux animations.
+    @media (prefers-reduced-motion: reduce){ 
+        *{
+       animation: none !important;
+    transition: none !important;
+  }
+}   */
